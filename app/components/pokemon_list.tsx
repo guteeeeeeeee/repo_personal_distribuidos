@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+
 import { useEffect, useState } from "react";
 import axios from "axios";
 import PokemonItem from "./pokemon_item";
@@ -18,7 +20,10 @@ export default function PokemonList() {
   return (
     <ul>
       {pokemons.map((p, index) => (
-        <PokemonItem key={index} name={p.name} url={p.url} />
+		<li key={index}>
+			<PokemonItem name={p.name} url={p.url} />
+        	  	<Link href={`/pokemon/${index + 1}`}>{p.name}</Link>
+	        </li>
       ))}
     </ul>
   );
